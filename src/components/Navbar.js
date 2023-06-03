@@ -73,6 +73,7 @@ const Navbar = () => {
             return <SidebarChat key={room.id} id={room.id} name={room.data.name} />
           })
         }
+
       </div>
     </>
   )

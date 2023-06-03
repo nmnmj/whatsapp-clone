@@ -55,6 +55,7 @@ const Chats = () => {
 
   const sendMessage = (e)=>{
     e.preventDefault()
+    if(input == "") return false;
     const roomRef = doc(db, "rooms", roomId)
     const messagesRef = collection(roomRef, "messages")
   
@@ -109,7 +110,7 @@ const Chats = () => {
             </>
           })
         }
-      
+         
        
       </div>
       <form onSubmit={sendMessage}>
