@@ -1,0 +1,57 @@
+.navbar{
+    width: 30vw;
+  }
+
+.sidebarheader{
+    background-color: rgb(246, 246, 241);
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.sidebarheaderright{
+display: flex;
+align-items: center;
+justify-content: space-between;
+min-width: 10vw;
+}
+
+.sidebarheaderright > .MulSvgIcon-root{
+margin-right: 2vw ;
+font-size: 24px !important;
+}
+
+.sidebarsearch{
+background-color: white;
+display: flex;
+align-items: center;
+height: 3.5vh;
+padding: 1vw;
+}
+
+.searchcontainer{
+display: flex;
+align-items: center;
+width: 100%;
+border-radius: 10px;
+background-color: whitesmoke;
+height: 35px;
+}
+
+.searchcontainer > input{
+    border: none;
+    margin-left: 10px;
+}
+
+.searchcontainer > .MulSvgIcon-root{
+    color:grey;   
+}
+
+input{
+    background-color: whitesmoke;
+}
+
+.contacts{
+    height: 83vh;
+    overflow: auto;
+    background-color: white;
+}
