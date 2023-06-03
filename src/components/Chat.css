@@ -83,11 +83,16 @@ form > .chatfooter{
 }
 
 form > .chatfooter > input{
+    padding: .3rem;
     border: 1px solid grey;
     height: 1.5rem;
     background-color: white;
     flex: 1;
     border-radius: .3rem;
+}
+
+input:focus{
+    outline-color: skyblue;
 }
 
 .nonebtn{

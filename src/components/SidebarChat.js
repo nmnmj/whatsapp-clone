@@ -20,7 +20,7 @@ const SidebarChat = ({addnewchat, name, id}) => {
         }))
       })
     }
-  },[])
+  },[id])
 
   useEffect(()=>{
     setSeed(Math.floor(Math.random()*5000))

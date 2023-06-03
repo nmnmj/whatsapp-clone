@@ -120,7 +120,7 @@ const Chats = () => {
         <IconButton>
             <AttachFileIcon />  
         </IconButton>
-        <input type="text" name="" value={input} onChange={(e)=>setInput(e.target.value)}  />
+        <input type="text" name="" value={input} onChange={(e)=>setInput(e.target.value)} placeholder='Type a message' />
         <button type='submit' className='nonebtn'>
         <IconButton>
           <SendIcon />
