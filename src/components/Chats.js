@@ -77,9 +77,15 @@ const Chats = () => {
         <div className="chatheaderinfo">
           <h3>{roomName}</h3>
           <p>
-            Last seen at...
             {
-              new Date(messages[messages.length-1]?.timestamp?.toDate()).toUTCString()
+              messages.length>0 ? 
+              <>
+              Last Seen at {
+                new Date(messages[messages.length-1]?.timestamp?.toDate()).toLocaleTimeString() 
+              }
+              </>
+              :
+              ""
             }
           </p>  
         </div>
@@ -113,8 +119,8 @@ const Chats = () => {
          
        
       </div>
-      <form onSubmit={sendMessage}>
       <div className="chatfooter">
+      <form onSubmit={sendMessage}>
         <IconButton>
           <InsertEmoticonIcon />
         </IconButton>
@@ -130,8 +136,8 @@ const Chats = () => {
         <IconButton>
           <MicIcon />
         </IconButton>
-      </div>
       </form>
+      </div>
     </div>
   )
 }

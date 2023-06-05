@@ -3,6 +3,8 @@
     padding: .8rem;
     cursor: pointer;
     border-bottom: 1px solid rgb(199, 231, 247);
+    /* overflow: auto; */
+    /* height: 100vh; */
 }
 
 .chatinfo{

@@ -34,25 +34,24 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="sidebar">
-        <div className='sidebarheader'>
+    <div className='sidebarmain'>
+      <div className='sidebarheader'>
           <IconButton>
             <Avatar src={user.photoURL} />
           </IconButton>
-          <div className="sidebarheaderright">
-            <IconButton>
-              <Groups2Icon />
-            </IconButton>
-            <IconButton>
-              <DonutLargeIcon />
-            </IconButton>
-            <IconButton>
-              <ChatIcon />
-            </IconButton>
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          </div>
+        <div className="sidebarheaderright">
+          <IconButton>
+            <Groups2Icon />
+          </IconButton>
+          <IconButton>
+            <DonutLargeIcon />
+          </IconButton>
+          <IconButton>
+            <ChatIcon />
+          </IconButton>
+          <IconButton>
+            <MoreVertIcon />
+          </IconButton>
         </div>
       </div>
       <div className="sidebarsearch">
@@ -75,6 +74,8 @@ const Navbar = () => {
         }
 
       </div>
+
+    </div>
     </>
   )
 }

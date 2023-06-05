@@ -31,7 +31,7 @@ const Login = () => {
     <div>
         <div className="logincontainer">
         <h1>Sign in to WhatsApp</h1>
-        <button onClick={handlesignin} style={{ border: "none", backgroundColor: "transparent" }}>
+        <button onClick={handlesignin} style={{ border: "none", backgroundColor: "transparent", margin:"1rem" }}>
             <GoogleButton />
         </button>
         </div>

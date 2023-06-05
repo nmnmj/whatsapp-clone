@@ -1,6 +1,11 @@
-.navbar{
+.sidebarmain{
+    display: grid;
+    grid-template-rows: 10vh 10vh 80vh;
     width: 30vw;
+    overflow: auto;
+    /* background-color: aqua; */
   }
+
 
 .sidebarheader{
     background-color: rgb(246, 246, 241);
@@ -11,8 +16,6 @@
 .sidebarheaderright{
 display: flex;
 align-items: center;
-justify-content: space-between;
-min-width: 10vw;
 }
 
 .sidebarheaderright > .MulSvgIcon-root{
@@ -28,13 +31,18 @@ height: 3.5vh;
 padding: 1vw;
 }
 
+input{
+    outline: none;
+
+}
+
 .searchcontainer{
 display: flex;
 align-items: center;
 width: 100%;
 border-radius: 10px;
 background-color: whitesmoke;
-height: 35px;
+height: 2rem;
 }
 
 .searchcontainer > input{
@@ -51,7 +59,7 @@ input{
 }
 
 .contacts{
-    height: 83vh;
+    height: max-content;
     overflow: auto;
     background-color: white;
 }

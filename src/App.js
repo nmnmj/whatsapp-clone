@@ -26,24 +26,15 @@ function App() {
         <div className='navbar'>
           <Navbar />
         </div>
-        <Routes>
-          <Route path="/rooms/:roomId" element={<Chat />} />
-        </Routes>
+        <div className='chatfromapp'>
+          <Routes>
+            <Route path="/rooms/:roomId" element={<Chats />} />
+          </Routes>
+        </div>
       </div>
     }
     </>
   );
-}
-
-
-const Chat=()=>{
-  return (
-    <>
-    <div className="chatframe">
-      <Chats />
-    </div>
-    </>
-  )
 }
 
 export default App;

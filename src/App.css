@@ -4,8 +4,8 @@
 }
 
 .app{
-  height: 100vh;
-  width: 100vw;
+  height: 100vh !important;
+  width: 100vw !important;
   display: flex;
 }
 
@@ -18,6 +18,12 @@
 }
 
 .logincontainer{
-  
   text-align: center;
 }
+
+.chatfromapp{
+  height: 100vh;
+  width: 70%;
+  /* background-color: red; */
+}
+
