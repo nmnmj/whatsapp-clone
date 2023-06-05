@@ -7,6 +7,7 @@
   height: 100vh !important;
   width: 100vw !important;
   display: flex;
+  min-width: max-content;
 }
 
 .login{
@@ -26,4 +27,5 @@
   width: 70%;
   /* background-color: red; */
 }
+
 

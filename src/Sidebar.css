@@ -2,10 +2,18 @@
     display: grid;
     grid-template-rows: 10vh 10vh 80vh;
     width: 30vw;
-    overflow: auto;
+    overflow-y: auto;
+    min-width: max-content;
     /* background-color: aqua; */
   }
 
+  /* @media(min-width: 700px) {
+    .contacts{
+        display: grid;
+        grid-template-rows: 10vh 10vh 80vh;
+        width: 100%;
+    }
+} */
 
 .sidebarheader{
     background-color: rgb(246, 246, 241);
