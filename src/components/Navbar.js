@@ -15,14 +15,32 @@ import { useStateValue } from './StateProvider';
 
 const Navbar = () => {
   const [rooms, setRooms] = useState([])
+  // const [otos, setOtos] = useState([])
   const[{user}, dispatch] = useStateValue()
   useEffect(()=>{
     const unsubscribe = onSnapshot(collection(db, "rooms"), (snapshot) => {
       setRooms(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
+        snapshot.docs.map((doc) => {
+          console.log(doc.data())
+          console.log(doc.id)
+          if(doc.id.includes(",")){
+            let docid = doc.id.split(",")
+            // console.log(docid[0])
+            if(docid[1] == user.email){
+              return {
+                id: doc.id,
+                data: doc.data(),
+              }
+            }
+            if((docid[0]) != user.email){
+              return false
+            }
+          }
+          return {
+            id: doc.id,
+            data: doc.data(),
+          }
+        })
       );
     });
 
@@ -31,6 +49,8 @@ const Navbar = () => {
     }
 
   },[])
+
+  console.log(user.email)
 
   return (
     <>
@@ -67,11 +87,19 @@ const Navbar = () => {
       </div>
       <div className="contacts">
         <SidebarChat addnewchat />
-        {
+        {/* {
           rooms.map(room=>{
             return <SidebarChat key={room.id} id={room.id} name={room.data.name} />
           })
-        }
+        } */}
+      {
+        rooms.map(room => {
+          if (room.data && room.data.name) {
+            return <SidebarChat key={room.id} id={room.id} name={room.data.name} />;
+          }
+          return null;
+        })
+      }
 
       </div>
 

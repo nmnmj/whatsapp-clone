@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import './Sidebarchat.css'
 import { Avatar } from '@mui/material'
 import db from '../config/firebaseconfig'
-import { addDoc, collection, doc, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { addDoc, collection, doc, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore'
 import { Link } from 'react-router-dom'
+import { useStateValue } from './StateProvider'
 
 const SidebarChat = ({addnewchat, name, id}) => {
   let[seed, setSeed] = useState('0')
   const [ messages, setMessages] = useState([])
+  const[{user}, dispatch] = useStateValue()
 
   useEffect(()=>{
     if(id){
@@ -42,6 +44,29 @@ const SidebarChat = ({addnewchat, name, id}) => {
       }
   }
 
+  const createoneChat = async ()=>{
+    console.log(user)
+    console.log(user.email)
+    const reciever = prompt("Enter the email id whom you want to message.")
+    if(reciever){
+      try {
+        const roomsCollection = collection(db, "rooms")
+        const roomId = user.email+","+reciever
+        console.log(roomId)
+        const roomDocRef = doc(roomsCollection, roomId)
+        const docRef = await setDoc(doc(db, "rooms", roomId), {
+          name: reciever
+        });
+        // await addDoc(roomDocRef, {
+        //   name: reciever
+        // })
+        // await setDoc(doc(roomDocRef, roomId))
+      } catch (error) {
+        alert("Error", error)
+      }
+    }
+  }
+
   return !addnewchat ? (
     <Link to={`/rooms/${id}`} className='nolink'>
       <div className='sidebarchat'>
@@ -62,9 +87,14 @@ const SidebarChat = ({addnewchat, name, id}) => {
       </div>
     </Link>
   ) :
+  <>
   <div onClick={createChat} className='sidebarchat'>
-    <h3>Add New Chat</h3>
+    <h3>Add New Room</h3>
   </div>
+  <div onClick={createoneChat} className='sidebarchat'>
+    <h3>Create One to One Chat</h3>
+  </div>
+  </>
 }
 
 export default SidebarChat
