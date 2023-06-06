@@ -110,4 +110,5 @@ input:focus{
 
 .nonebtn{
     border: none;
+    background-color: transparent;
 }
