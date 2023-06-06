@@ -19,9 +19,9 @@ const Chats = () => {
   const {roomId} = useParams()
   const[roomName, setRoomName] = useState('')
   const[{user}, dispatch] = useStateValue()
-  // const splitroomId = roomId.split(",")
-  // const roomId1 = splitroomId[0]
-  // const roomId2 = splitroomId[1]
+  const splitroomId = roomId.split(",")
+  const roomId1 = splitroomId[0]
+  const roomId2 = splitroomId[1]
   // console.log(roomId1 )
   // console.log(roomId2 == user.email)
 
@@ -75,76 +75,80 @@ const Chats = () => {
 
   return (
     <>
-    <div className='chat'>
-      <div className="chatheader">
-        <IconButton>
-          <Avatar src={`https://api.dicebear.com/api/human/${seed}.svg`} /> 
-        </IconButton>
-        <div className="chatheaderinfo">
-          <h3>{roomName}</h3>
-          <p>
-            {
-              messages.length>0 ? 
-              <>
-              Last Seen at {
-                new Date(messages[messages.length-1]?.timestamp?.toDate()).toLocaleTimeString() 
+    {
+      ((roomId2 == user.email && roomId.includes(",")) || (!roomId.includes(",")) )&&
+      <div className='chat'>
+        <div className="chatheader">
+          <IconButton>
+            <Avatar src={`https://api.dicebear.com/api/human/${seed}.svg`} /> 
+          </IconButton>
+          <div className="chatheaderinfo">
+            <h3>{roomName}</h3>
+            <p>
+              {
+                messages.length>0 ? 
+                <>
+                Last Seen at {
+                  new Date(messages[messages.length-1]?.timestamp?.toDate()).toLocaleTimeString() 
+                }
+                </>
+                :
+                ""
               }
-              </>
-              :
-              ""
-            }
-          </p>  
-        </div>
-          <div className="chatheaderright">
-            <IconButton>
-              <SearchOutlined />
-            </IconButton>
-            
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
+            </p>  
           </div>
+            <div className="chatheaderright">
+              <IconButton>
+                <SearchOutlined />
+              </IconButton>
+              
+              <IconButton>
+                <MoreVertIcon />
+              </IconButton>
+            </div>
+        </div>
+        <div className="chatbody">
+          {
+            Array.isArray(messages) &&
+            messages.map((message)=>{
+              return <>
+                  <p className={`chatmsg ${message.name === user.displayName && 'chatmsgrecieve'}`}>
+                    <span className='chatname'>{message.name}</span>
+                    {message.message}
+                    <span className='chattimestamp'>
+                    {
+                      new Date(message.timestamp?.toDate()).toUTCString()
+                    }
+                    </span>
+                  </p>
+              </>
+            })
+          }
+          
+        
+        </div>
+        <div className="chatfooter">
+        <form onSubmit={sendMessage}>
+          <IconButton>
+            <InsertEmoticonIcon />
+          </IconButton>
+          <IconButton>
+              <AttachFileIcon />  
+          </IconButton>
+          <input type="text" name="" value={input} onChange={(e)=>setInput(e.target.value)} placeholder='Type a message' />
+          <button type='submit' className='nonebtn'>
+          <IconButton>
+            <SendIcon />
+          </IconButton>
+          </button>
+          <IconButton>
+            <MicIcon />
+          </IconButton>
+        </form>
+        </div>
       </div>
-      <div className="chatbody">
-        {
-          Array.isArray(messages) &&
-          messages.map((message)=>{
-            return <>
-                <p className={`chatmsg ${message.name === user.displayName && 'chatmsgrecieve'}`}>
-                  <span className='chatname'>{message.name}</span>
-                  {message.message}
-                  <span className='chattimestamp'>
-                  {
-                    new Date(message.timestamp?.toDate()).toUTCString()
-                  }
-                  </span>
-                </p>
-            </>
-          })
-        }
-         
-       
-      </div>
-      <div className="chatfooter">
-      <form onSubmit={sendMessage}>
-        <IconButton>
-          <InsertEmoticonIcon />
-        </IconButton>
-        <IconButton>
-            <AttachFileIcon />  
-        </IconButton>
-        <input type="text" name="" value={input} onChange={(e)=>setInput(e.target.value)} placeholder='Type a message' />
-        <button type='submit' className='nonebtn'>
-        <IconButton>
-          <SendIcon />
-        </IconButton>
-        </button>
-        <IconButton>
-          <MicIcon />
-        </IconButton>
-      </form>
-      </div>
-    </div>
+
+    }
     
     </>
   )
