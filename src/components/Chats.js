@@ -76,7 +76,7 @@ const Chats = () => {
   return (
     <>
     {
-      ((roomId2 == user.email && roomId.includes(",")) || (!roomId.includes(",")) )&&
+      (((roomId2 == user.email || roomId1 == user.uid ) && roomId.includes(",")) || (!roomId.includes(",")) )&&
       <div className='chat'>
         <div className="chatheader">
           <IconButton>
