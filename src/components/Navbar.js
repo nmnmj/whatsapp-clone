@@ -21,8 +21,8 @@ const Navbar = () => {
     const unsubscribe = onSnapshot(collection(db, "rooms"), (snapshot) => {
       setRooms(
         snapshot.docs.map((doc) => {
-          console.log(doc.data())
-          console.log(doc.id)
+          // console.log(doc.data())
+          // console.log(doc.id)
           if(doc.id.includes(",")){
             let docid = doc.id.split(",")
             // console.log(docid[0])
@@ -32,7 +32,7 @@ const Navbar = () => {
                 data: doc.data(),
               }
             }
-            if((docid[0]) != user.email){
+            if((docid[0]) != user.uid){
               return false
             }
           }
@@ -50,7 +50,7 @@ const Navbar = () => {
 
   },[])
 
-  console.log(user.email)
+  // console.log(user.email)
 
   return (
     <>

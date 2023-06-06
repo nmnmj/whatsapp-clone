@@ -19,6 +19,11 @@ const Chats = () => {
   const {roomId} = useParams()
   const[roomName, setRoomName] = useState('')
   const[{user}, dispatch] = useStateValue()
+  // const splitroomId = roomId.split(",")
+  // const roomId1 = splitroomId[0]
+  // const roomId2 = splitroomId[1]
+  // console.log(roomId1 )
+  // console.log(roomId2 == user.email)
 
   useEffect(()=>{
     const data = async()=>{
@@ -69,6 +74,7 @@ const Chats = () => {
   }
 
   return (
+    <>
     <div className='chat'>
       <div className="chatheader">
         <IconButton>
@@ -139,6 +145,8 @@ const Chats = () => {
       </form>
       </div>
     </div>
+    
+    </>
   )
 }
 

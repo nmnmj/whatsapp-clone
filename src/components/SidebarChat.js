@@ -51,7 +51,7 @@ const SidebarChat = ({addnewchat, name, id}) => {
     if(reciever){
       try {
         const roomsCollection = collection(db, "rooms")
-        const roomId = user.email+","+reciever
+        const roomId = user.uid+","+reciever
         console.log(roomId)
         const roomDocRef = doc(roomsCollection, roomId)
         const docRef = await setDoc(doc(db, "rooms", roomId), {
