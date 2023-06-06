@@ -55,7 +55,7 @@ const SidebarChat = ({addnewchat, name, id}) => {
         console.log(roomId)
         const roomDocRef = doc(roomsCollection, roomId)
         const docRef = await setDoc(doc(db, "rooms", roomId), {
-          name: reciever
+          name: reciever.substring(0,4)+" & "+user.email.substring(0,4)
         });
         // await addDoc(roomDocRef, {
         //   name: reciever
